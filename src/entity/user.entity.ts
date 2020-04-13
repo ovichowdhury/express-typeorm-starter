@@ -1,4 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import Profile from "./profile.entity";
 
 @Entity()
 export default class User {
@@ -11,5 +12,11 @@ export default class User {
 
     @Column()
     lastName: string;
+
+    @OneToOne(type => Profile, {
+        cascade: true
+    })
+    @JoinColumn()
+    profile: Profile;
 
 }

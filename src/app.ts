@@ -39,38 +39,48 @@ createConnection().then(connention => {
     // routes
     app.use('/users', userRouter);
 
-
-    // starting the server
-    // app.listen(3000, () => console.log("Server Started at port 3000"));
+    // global exceptin handler
+    app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        return res.status(200).json({
+            message: "Internal Server Error",
+            reason: err.message
+        });
+    })
 
 
     // port number
     const port: number = Number(process.env.PORT) || 3000;
 
-    if (cluster.isMaster) {
-        // Count the machine's CPUs
-        const cpuCount = os.cpus().length;
+    // starting the server
+    app.listen(port, () => console.log("Server Started at port " + port));
 
-        // Create a worker for each CPU
-        for (let i = 0; i < cpuCount; i += 1) {
-            cluster.fork();
-        }
-    }
-    else {
-        app.listen(port, (err, res) => {
-            console.log(cluster.worker.id, " is listening on port: ", port);
-        })
-    }
 
-    // Listen for dying workers
-    cluster.on('exit', function (worker) {
+    
 
-        // Replace the dead worker,
-        // we're not sentimental
-        console.log('Worker %d died :(', worker.id);
-        cluster.fork();
+    // if (cluster.isMaster) {
+    //     // Count the machine's CPUs
+    //     const cpuCount = os.cpus().length;
 
-    });
+    //     // Create a worker for each CPU
+    //     for (let i = 0; i < cpuCount; i += 1) {
+    //         cluster.fork();
+    //     }
+    // }
+    // else {
+    //     app.listen(port, (err, res) => {
+    //         console.log(cluster.worker.id, " is listening on port: ", port);
+    //     })
+    // }
+
+    // // Listen for dying workers
+    // cluster.on('exit', function (worker) {
+
+    //     // Replace the dead worker,
+    //     // we're not sentimental
+    //     console.log('Worker %d died :(', worker.id);
+    //     cluster.fork();
+
+    // });
 
 }).catch(ex => {
     console.error("Database Connection Error: ",ex);

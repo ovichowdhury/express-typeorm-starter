@@ -2,6 +2,7 @@ import express, { Router, Request, Response, NextFunction } from 'express';
 import { getConnection, getManager } from 'typeorm';
 import User from '../entity/user.entity';
 import Profile from '../entity/profile.entity';
+import {wrap} from '../middlewares/exceptionHandler.middle';
 
 const router: Router = express.Router();
 
@@ -102,5 +103,10 @@ router.post('/profile', async (req: Request, res: Response, next: NextFunction) 
     }
 })
 
+// get all user with profile
+router.get('/', wrap( async (req: Request, res: Response, next: NextFunction) => {
+    const results: User[] =  await getManager().find(User, { relations: ["profile"] });
+    return res.status(200).json(results);
+}));
 
 export default router;

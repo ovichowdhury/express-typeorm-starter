@@ -8,6 +8,7 @@ import * as path from 'path';
 import cors from 'cors';
 import { createConnection } from "typeorm";
 import userRouter from './routes/user.route';
+import accountRouter from './routes/account.route';
 
 createConnection().then(connention => {
     const app: Application = express();
@@ -38,6 +39,7 @@ createConnection().then(connention => {
 
     // routes
     app.use('/users', userRouter);
+    app.use('/accounts', accountRouter);
 
     // global exceptin handler
     app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

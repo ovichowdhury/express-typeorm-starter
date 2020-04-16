@@ -109,4 +109,22 @@ router.get('/', wrap( async (req: Request, res: Response, next: NextFunction) =>
     return res.status(200).json(results);
 }));
 
+
+// delete a user with profile
+router.delete('/:id', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    await getManager().transaction(async tem => {
+        const userProfile: any = await tem.getRepository(User).createQueryBuilder("user")
+                                .select("user.id")
+                                .addSelect("profile.id")
+                                .innerJoin("user.profile", "profile")
+                                .where("user.id = :id", {id: req.params.id})
+                                .getOne();
+        
+        await tem.getRepository(User).delete(userProfile.id);
+        await tem.getRepository(Profile).delete(userProfile.profile.id);
+        
+        return res.status(200).json({deletedItems: userProfile});
+    })
+}));
+
 export default router;

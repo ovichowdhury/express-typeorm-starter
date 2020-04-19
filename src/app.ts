@@ -43,7 +43,7 @@ createConnection().then(connention => {
 
     // global exceptin handler
     app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-        return res.status(200).json({
+        return res.status(500).json({
             message: "Internal Server Error",
             reason: err.message
         });

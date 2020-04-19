@@ -17,6 +17,8 @@ export class Account {
     @CreateDateColumn()
     createDate: Date;
 
-    @OneToMany(type => Applicant, applicant => applicant.account)
+    @OneToMany(type => Applicant, applicant => applicant.account, {
+        cascade: true
+    })
     applicants: Applicant[];
 }

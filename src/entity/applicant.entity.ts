@@ -1,5 +1,6 @@
-import { Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, Entity } from "typeorm";
+import { Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, Entity, OneToOne, JoinColumn } from "typeorm";
 import { Account } from "./account.entity";
+import { ApplicantPicture } from "./applicant-picture.entity";
 
 @Entity()
 export class Applicant {
@@ -22,4 +23,10 @@ export class Applicant {
 
     @ManyToOne(type => Account, account => account.applicants)
     account: Account;
+
+    @OneToOne(type => ApplicantPicture, {
+        cascade: true
+    })
+    @JoinColumn()
+    applicantPicture: ApplicantPicture;
 }

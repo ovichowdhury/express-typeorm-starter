@@ -2,7 +2,7 @@ import express, { Router, Request, Response, NextFunction } from 'express';
 import { getConnection, getManager } from 'typeorm';
 import User from '../entity/user.entity';
 import Profile from '../entity/profile.entity';
-import {wrap} from '../middlewares/exceptionHandler.middle';
+import {wrap} from '../middlewares/exception-handler.middle';
 
 const router: Router = express.Router();
 

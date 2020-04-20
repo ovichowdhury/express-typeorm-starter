@@ -1,8 +1,9 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
-import { wrap } from '../middlewares/exceptionHandler.middle';
+import { wrap } from '../middlewares/exception-handler.middle';
 import { Account } from '../entity/account.entity';
 import { Applicant } from '../entity/applicant.entity';
 import { getManager } from 'typeorm';
+import { ApplicantPicture } from '../entity/applicant-picture.entity';
 
 const router: Router = express.Router();
 
@@ -55,6 +56,17 @@ router.post('/applicant', wrap(async (req: Request, res: Response, next: NextFun
     return res.status(201).json(results);
 }));
 
+
+// insert applicant image
+router.post('/applicant/picture', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const applicantPic: ApplicantPicture = new ApplicantPicture();
+    applicantPic.data = Buffer.from(req.body.data, 'base64');
+    applicantPic.mimeType = req.body.mimeType;
+    await getManager().getRepository(ApplicantPicture).save(applicantPic);
+    const results = await getManager().getRepository(Applicant).update(req.body.applicantId, {applicantPicture: applicantPic});
+    return res.status(201).json(results);
+}));
+
 // update account
 router.put('/', wrap(async (req: Request, res: Response, next: NextFunction) => {
     const results = await getManager().getRepository(Account).update(req.body.accountId, {name: req.body.name});
@@ -75,8 +87,8 @@ router.get('/', wrap(async (req: Request, res: Response, next: NextFunction) => 
 }));
 
 // get applicant account from applicant id
-router.get('/:applicantId', wrap(async (req: Request, res: Response, next: NextFunction) => {
-    const results = await getManager().findOne(Applicant, parseInt(req.params.applicantId), {relations: ["account"]});
+router.get('/applicant/:applicantId', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const results = await getManager().findOne(Applicant, parseInt(req.params.applicantId), {relations: ["account", "applicantPicture"]});
     return res.status(200).json(results);
 }));
 

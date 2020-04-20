@@ -55,10 +55,28 @@ router.post('/applicant', wrap(async (req: Request, res: Response, next: NextFun
     return res.status(201).json(results);
 }));
 
+// update account
+router.put('/', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const results = await getManager().getRepository(Account).update(req.body.accountId, {name: req.body.name});
+    return res.status(200).json(results);
+}));
+
+// update applicant
+router.put('/applicant', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const results = await getManager().getRepository(Applicant).update(req.body.applicantId, {name: req.body.name, nid: req.body.nid});
+    return res.status(200).json(results);
+}));
+
 
 // get all accounts with applicants
 router.get('/', wrap(async (req: Request, res: Response, next: NextFunction) => {
     const results = await getManager().getRepository(Account).find({ relations: ["applicants"] });
+    return res.status(200).json(results);
+}));
+
+// get applicant account from applicant id
+router.get('/:applicantId', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const results = await getManager().findOne(Applicant, parseInt(req.params.applicantId), {relations: ["account"]});
     return res.status(200).json(results);
 }));
 

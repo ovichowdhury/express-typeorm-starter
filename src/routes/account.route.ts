@@ -1,9 +1,9 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
 import { wrap } from '../middlewares/exception-handler.middle';
-import { Account } from '../entity/account.entity';
-import { Applicant } from '../entity/applicant.entity';
+import { Account } from '../entity/one-to-many/account.entity';
+import { Applicant } from '../entity/one-to-many/applicant.entity';
 import { getManager } from 'typeorm';
-import { ApplicantPicture } from '../entity/applicant-picture.entity';
+import { ApplicantPicture } from '../entity/one-to-many/applicant-picture.entity';
 
 const router: Router = express.Router();
 

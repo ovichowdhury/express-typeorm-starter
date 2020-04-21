@@ -6,7 +6,7 @@ let ormConf = {
   "password": process.env.DB_PASSWORD,
   "database": process.env.DB_NAME,
   "entities": [
-    __dirname + "/dist/entity/*.entity.js"
+    __dirname + "/dist/entity/**/*.entity.js"
   ],
   "logging": false,
   "synchronize": false
@@ -15,7 +15,7 @@ let ormConf = {
 const nodeEnv = process.env.NODE_ENV || "prod";
 
 if(nodeEnv === "dev") {
-  ormConf.entities[0] = __dirname + "/src/entity/*.entity.ts";
+  ormConf.entities[0] = __dirname + "/src/entity/**/*.entity.ts";
   ormConf.logging = true;
   ormConf.synchronize = true;
 }

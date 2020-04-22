@@ -49,5 +49,20 @@ router.get('/', wrap(async (req: Request, res: Response, next: NextFunction) => 
     return res.status(200).json(results);
 }))
 
+// remove a role from person
+router.delete('/person-role/', wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const person: any = await getManager().getRepository(Person).findOne(parseInt(req.body.personId), {
+        relations: ["roles"]
+    });
+    person.roles = person.roles.filter( (role: Role) => {
+        if(role.id !== req.body.roleId)
+            return role;
+    });
+
+    const results = await getManager().getRepository(Person).save(person);
+    return res.status(200).json(results);
+
+}))
+
 
 export default router;

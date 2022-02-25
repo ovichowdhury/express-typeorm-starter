@@ -15,3 +15,6 @@
 11. npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 12. yarn add  @commitlint/config-conventional @commitlint/cli -D
 13. echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+14. yarn add tsconfig-paths nodemon -D
+15. Add dev script in package.json using nodemon.json
+

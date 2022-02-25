@@ -3,10 +3,10 @@
     "baseUrl": "./src",
     "paths": {
       "@auth/*": ["auth/*"],
-      "@common/*": ["common/*"],
+      "@global/*": ["global/*"],
       "@config/*": ["config/*"],
       "@database/*": ["database/*"],
-      "@users/*": ["users/*"],
+      "@user/*": ["user/*"],
       "@role/*": ["role/*"]
     },
     "typeRoots": ["node", "express", "@types", "./node_modules/@types"],

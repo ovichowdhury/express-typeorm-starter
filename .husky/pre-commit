@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '[INFO] Formatting code...'
+yarn format && git add -A . 
+
+echo '[INFO] Checking code quality...'
+
+yarn lint && yarn check:format && yarn check:types

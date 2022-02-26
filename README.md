@@ -17,4 +17,10 @@
 13. echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
 14. yarn add tsconfig-paths nodemon -D
 15. Add dev script in package.json using nodemon.json
+16. yarn add cross-env -D 
+17. Add start script with env var in package.json
+18. yarn add express cors dotenv morgan helmet
+19. yarn add @types/express -D
+20. yarn add @types/cors -D
+21. yarn add @types/morgan -D
 

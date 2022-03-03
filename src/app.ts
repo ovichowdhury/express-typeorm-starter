@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import configureExpress from '@config/express.config';
+import configureRoutes from '@config/routes.config';
 
 const app: express.Application = express();
 
@@ -11,7 +12,7 @@ configureExpress(app);
 /**
  * Registering Modules
  */
-// configureRoutes(app);
+configureRoutes(app);
 
 /**
  * Health of API

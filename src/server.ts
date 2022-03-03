@@ -5,7 +5,7 @@ import * as http from 'http';
 import { createConnection } from 'typeorm';
 
 (async function () {
-  // typeorm connection
+  // typeorm connection establish
   await createConnection();
   const server: http.Server = http.createServer(app);
 

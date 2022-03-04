@@ -25,5 +25,6 @@
 21. yarn add @types/morgan -D
 22. yarn add typeorm typedi pg reflect-metadata
 23. yarn add -D jest ts-jest @types/jest
+24. yarn add -D supertest @types/supertest
 
 

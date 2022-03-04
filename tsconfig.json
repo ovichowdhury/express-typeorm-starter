@@ -10,6 +10,7 @@
       "@role/*": ["role/*"]
     },
     "typeRoots": ["node", "express", "@types", "./node_modules/@types"],
+    "types": ["jest"],
     "outDir": "./dist",
     "rootDir": "./src",
     "lib": ["es2020", "DOM"],

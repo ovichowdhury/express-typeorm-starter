@@ -26,5 +26,7 @@
 22. yarn add typeorm typedi pg reflect-metadata
 23. yarn add -D jest ts-jest @types/jest
 24. yarn add -D supertest @types/supertest
+25. yarn add express-validator lodash
+26. yarn add -D @types/lodash
 
 

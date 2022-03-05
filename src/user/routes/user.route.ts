@@ -17,4 +17,43 @@ router.get(
   }),
 );
 
+/**
+ * Create user
+ */
+router.post(
+  '/',
+  [],
+  wrap(async (req: Request, res: Response) => {
+    return res.status(200).json({
+      message: 'Request Successful',
+    });
+  }),
+);
+
+/**
+ * Get user
+ */
+router.put(
+  '/',
+  [],
+  wrap(async (req: Request, res: Response) => {
+    return res.status(200).json({
+      message: 'Request Successful',
+    });
+  }),
+);
+
+/**
+ * Get user
+ */
+router.delete(
+  '/',
+  [],
+  wrap(async (req: Request, res: Response) => {
+    return res.status(200).json({
+      message: 'Request Successful',
+    });
+  }),
+);
+
 export default router;

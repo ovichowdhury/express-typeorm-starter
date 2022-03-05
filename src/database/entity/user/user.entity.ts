@@ -5,17 +5,11 @@ export default class User {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({ unique: true })
-  username!: string;
-
-  @Column({ select: false })
-  password!: string;
+  @Column()
+  name!: string;
 
   @Column({ unique: true })
   mobile!: string;
-
-  @Column()
-  name!: string;
 
   @Column()
   email!: string;

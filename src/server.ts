@@ -11,8 +11,8 @@ import { createConnection } from 'typeorm';
 
   server.listen(appConfig.port, () => {
     // eslint-disable-next-line no-console
-    console.log('Environment: ', appConfig.env);
+    console.log('[INFO] Environment: ', appConfig.env);
     // eslint-disable-next-line no-console
-    console.log(`Server running at http://localhost:${appConfig.port}`);
+    console.log(`[INFO] Server running at http://localhost:${appConfig.port}`);
   });
 })();

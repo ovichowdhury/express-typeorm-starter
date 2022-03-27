@@ -18,5 +18,11 @@ log:
 
 dev: down up log
 
+build-prod: 
+	docker build --target prod -t api .
+
+run-prod:
+	docker run --env-file ./.env --rm -d --network=host api
+
 
 

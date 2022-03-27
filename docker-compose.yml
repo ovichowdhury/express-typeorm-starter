@@ -39,7 +39,7 @@ services:
     image: "adminer:4"
     container_name: "db_admin"
     ports:
-      - 8080:8080
+      - 8090:8080
     networks:
       - net
 

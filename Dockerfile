@@ -28,3 +28,25 @@ EXPOSE $PORT
 ENV NODE_PATH=./src
 
 CMD ["yarn", "dev"]
+
+
+# production target
+FROM base AS prod
+
+ENV NODE_ENV=production
+
+WORKDIR /app
+
+RUN chown -R node:node /app
+
+USER node
+
+COPY --chown=node:node --from=builder /app /app
+
+RUN yarn install --production --frozen-lockfile
+
+EXPOSE $PORT
+
+ENV NODE_PATH=./dist
+
+CMD ["node", "--unhandled-rejections=strict", "./dist/server.js"]

@@ -18,6 +18,10 @@ configureRoutes(app);
 /**
  * Health of API
  */
+app.get('/_health', (_: Request, res: Response) => {
+  return res.status(200).json({ message: 'OK' });
+});
+
 app.use('*', (_: Request, res: Response) => {
   return res.status(404).json({ message: 'API not found' });
 });

@@ -1,10 +1,12 @@
+# Boilerplate for Express, TypeOrm
+
 ## How to Recreate ?
 
 Please go through the readme of typeorm-v2 Branch
 
 ## Commands
 
-### Develpoment Start
+### Development Start
 ``` bash
 yarn dev
 ```
@@ -14,7 +16,7 @@ yarn dev
 yarn build
 ```
 
-### Produciton Start
+### Production Start
 ``` bash
 yarn start
 ```

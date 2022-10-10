@@ -2,11 +2,13 @@ import 'reflect-metadata';
 import appConfig from '@config/app.config';
 import app from 'app';
 import * as http from 'http';
-import { createConnection } from 'typeorm';
+import AppDataSource from './database';
+// import { createConnection } from 'typeorm';
 
 (async function () {
   // typeorm connection establish
-  await createConnection();
+  // await createConnection();
+  await AppDataSource.initialize();
   const server: http.Server = http.createServer(app);
 
   server.listen(appConfig.port, () => {

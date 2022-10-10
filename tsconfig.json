@@ -28,6 +28,7 @@
     "moduleResolution": "node",
     "sourceMap": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "@types/**/*.ts"],
+  "files": ["@types/express/index.d.ts", "@types/node/environment.d.ts"],
   "exclude": ["node_modules"]
 }

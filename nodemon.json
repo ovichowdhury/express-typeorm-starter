@@ -3,6 +3,6 @@
   "ext": "ts",
   "ignore": ["src/**/*.spec.ts", "src/**/*.test.ts"],
   "execMap": {
-    "ts": "ts-node -r tsconfig-paths/register"
+    "ts": "ts-node --files -r tsconfig-paths/register"
   }
 }

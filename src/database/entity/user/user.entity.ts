@@ -17,6 +17,10 @@ export default class User {
   @Column()
   gender!: string;
 
+  //later added
+  // @Column({ nullable: true })
+  // age!: number;
+
   @Column()
   createdBy!: string;
 

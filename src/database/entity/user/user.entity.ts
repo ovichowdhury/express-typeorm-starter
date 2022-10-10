@@ -18,8 +18,8 @@ export default class User {
   gender!: string;
 
   //later added
-  // @Column({ nullable: true })
-  // age!: number;
+  @Column({ nullable: true })
+  age!: number;
 
   @Column()
   createdBy!: string;

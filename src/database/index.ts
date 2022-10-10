@@ -4,7 +4,7 @@ import path from 'path';
 import { DataSource } from 'typeorm';
 
 dotenv.config({
-  path: '../../.env',
+  path: path.join(__dirname, '../../.env'),
 });
 
 const ormConfigBase = {
@@ -18,11 +18,6 @@ const ormConfigBase = {
   migrations: [path.join(__dirname, './migration/*.js')],
   subscribers: [path.join(__dirname, './subscriber/*.js')],
   migrationsRun: true,
-  cli: {
-    entitiesDir: './src/database/entity/',
-    migrationsDir: './src/database/migration/',
-    subscribersDir: './src/database/subscriber/',
-  },
 };
 
 const ormConfig = {
